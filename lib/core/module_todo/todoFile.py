@@ -12,9 +12,11 @@ class TodoFile:
         return os.path.exists(self.__FILENAME)
     
     def readFileTodo(self) -> str:
-        with open(self.__FILENAME,"r") as file:
-            data = file.read()
-        return data
+        if self.checkFileTodoExist():
+            with open(self.__FILENAME,"r") as file:
+                data = file.read()
+            return data
+        return "The file Database.json not found."
     
     def writeFileTodo(self,content:str):
         with open(self.__FILENAME,"w") as file:
